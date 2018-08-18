@@ -2,6 +2,12 @@ export default {
     menus: [    // 菜单相关路由
         { key: '/app/dashboard/index', title: '首页', icon: 'mobile', component: 'Dashboard' },
         {
+            key: '/', title: '硬塞列表', icon: 'scan',
+            subs:[
+                {key: '/app/inside/article', title: '文章', component: 'Article'}
+            ]
+        },
+        {
             key: '/app/ui', title: 'UI', icon: 'scan',
             subs: [
                 { key: '/app/ui/buttons', title: '按钮', component: 'Buttons'},
