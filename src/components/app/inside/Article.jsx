@@ -39,7 +39,7 @@ class Article extends React.Component {
         }
         var postData = {
             "likes": !likeswitch,
-            // "dislike": this.state.dislikeswitchArr[index],
+            "dislike": record.dislike,
             // "userId": event.target.category.value,
             // "userName": event.target.likeNumber.value,
             "importnewsTitle": record.title,
@@ -59,10 +59,13 @@ class Article extends React.Component {
             .then(res => res.json())
             .then(
                 (result) => {
-                    console.log(result.data);
                     this.state.likeswitchArr[index] = !likeswitch;
                     this.state.likeswitchtypeArr[index] = type;
                     this.state.data.products[index].likeNumber = result.data.like;
+
+                    // this.state.dislikeswitchArr[index] = result.data.selfPerson.dislike;
+                    // this.state.dislikeswitchtypeArr[index] = !result.data.selfPerson.dislike?"dislike-o":"dislike";
+                    // this.state.data.products[index].dislikeNumber = result.data.dislike;
                     this.forceUpdate();
                 },
                 // Note: it's important to handle errors here
@@ -84,7 +87,7 @@ class Article extends React.Component {
             type = "dislike-o";
         }
         var postData = {
-            // "likes": "%" + event.target.title.value + "%",
+            "likes": record.likes,
             "dislike": !dislikeswitch,
             // "userId": event.target.category.value,
             // "userName": event.target.likeNumber.value,
@@ -109,6 +112,9 @@ class Article extends React.Component {
                     this.state.dislikeswitchArr[index] = !dislikeswitch;
                     this.state.dislikeswitchtypeArr[index] = type;
                     this.state.data.products[index].dislikeNumber = result.data.dislike;
+                    // this.state.likeswitchArr[index] = result.data.selfPerson.likes;
+                    // this.state.likeswitchtypeArr[index] = !result.data.selfPerson.likes?"like-o":"like";
+                    // this.state.data.products[index].likeNumber = result.data.like;
                     this.forceUpdate();
                 },
                 // Note: it's important to handle errors here
